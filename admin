@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⚙️ Admin — Gincana Super-Heróis</title>
+<style>
+:root{--gold:#f5c518;--dark:#0d0d1a;--panel:#13131f;--panel2:#1a1a2e;--border:rgba(255,255,255,0.08);--text:#e8e8f0;--muted:#888;--accent:#7c5cbf;--accent2:#a084e8;--red:#ef4444;--green:#22c55e;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--dark);color:var(--text);font-family:"Segoe UI",system-ui,sans-serif;min-height:100vh;}
+/* Login */
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem;}
+.login-box{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:2.5rem 2rem;width:100%;max-width:380px;text-align:center;}
+.login-box .lock{font-size:3rem;margin-bottom:1rem;}
+.login-box h1{font-size:1.4rem;font-weight:800;margin-bottom:0.4rem;}
+.login-box p{color:var(--muted);font-size:0.9rem;margin-bottom:1.75rem;}
+.login-box input{width:100%;background:var(--panel2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:1.1rem;padding:0.85rem 1rem;outline:none;text-align:center;letter-spacing:0.25em;margin-bottom:0.75rem;transition:border-color 0.2s;}
+.login-box input:focus{border-color:var(--accent2);}
+.login-box button{width:100%;background:var(--accent);border:none;color:#fff;padding:0.85rem;border-radius:10px;font-weight:700;cursor:pointer;font-size:1rem;transition:opacity 0.2s;}
+.login-box button:hover{opacity:0.9;}
+.login-err{color:var(--red);font-size:0.82rem;margin-top:0.6rem;display:none;}
+/* Admin */
+#admin-content{display:none;}
+.top-bar{background:var(--panel);border-bottom:1px solid var(--border);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;}
+.top-bar h1{font-size:1.1rem;font-weight:800;}
+.logout-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:0.35rem 0.85rem;border-radius:8px;font-size:0.8rem;cursor:pointer;}
+.logout-btn:hover{border-color:var(--red);color:var(--red);}
+.container{max-width:960px;margin:0 auto;padding:2rem 1rem;}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem;}
+.card-title{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent2);margin-bottom:0.75rem;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.75rem;margin-bottom:1.5rem;}
+.stat-box{background:var(--panel2);border-radius:12px;padding:1rem;text-align:center;}
+.stat-num{font-size:2rem;font-weight:900;color:var(--gold);}
+.stat-label{font-size:0.75rem;color:var(--muted);margin-top:2px;}
+.rank-card{background:var(--panel2);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.rank-pos{font-size:1.5rem;font-weight:900;color:var(--gold);min-width:2rem;}
+.rank-info{flex:1;}
+.rank-info h3{font-size:1rem;font-weight:700;}
+.rank-info p{font-size:0.8rem;color:var(--muted);}
+.pts-bar-bg{background:var(--panel);border-radius:4px;height:6px;margin-top:6px;}
+.pts-bar{background:var(--accent2);border-radius:4px;height:6px;}
+.rank-pts{background:var(--accent);color:#fff;border-radius:10px;padding:0.4rem 0.85rem;font-size:1.1rem;font-weight:800;}
+/* Voter cards */
+.voter-card{background:var(--panel2);border-radius:14px;padding:1.25rem;margin-bottom:1rem;border:1px solid var(--border);}
+.vcard-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.85rem;}
+.vcard-name{font-size:1.05rem;font-weight:800;color:var(--accent2);}
+.vcard-meta{display:flex;flex-direction:column;align-items:flex-end;gap:3px;}
+.vcard-time{font-size:0.72rem;color:var(--muted);}
+.vcard-grand{font-size:0.8rem;font-weight:700;color:var(--gold);background:rgba(245,197,24,0.1);border:1px solid rgba(245,197,24,0.25);border-radius:6px;padding:2px 8px;}
+.own-team-badge{background:rgba(245,197,24,0.1);border:1px solid rgba(245,197,24,0.3);border-radius:8px;padding:0.5rem 0.8rem;font-size:0.83rem;color:var(--gold);margin-bottom:0.75rem;}
+.team-breakdown{background:var(--panel);border-radius:10px;padding:0.8rem 0.9rem;margin-bottom:0.6rem;border:1px solid var(--border);}
+.team-breakdown.skipped{opacity:0.4;border-style:dashed;}
+.tb-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.4rem;}
+.tb-team-name{font-size:0.83rem;font-weight:700;}
+.tb-total{font-size:0.82rem;font-weight:800;color:var(--gold);background:rgba(245,197,24,0.1);border-radius:6px;padding:2px 8px;}
+.tb-skip-badge{font-size:0.75rem;color:var(--muted);font-style:italic;}
+.tb-criteria{display:grid;gap:0.35rem;}
+.tb-crit{display:grid;grid-template-columns:130px 1fr 32px;align-items:center;gap:0.5rem;}
+.tb-crit-general{background:rgba(245,197,24,0.06);border-radius:6px;padding:2px 4px;}
+.tb-crit-label{font-size:0.72rem;color:var(--muted);}
+.tb-crit-bar-wrap{background:rgba(255,255,255,0.06);border-radius:4px;height:6px;overflow:hidden;}
+.tb-crit-bar{height:6px;border-radius:4px;}
+.tb-crit-score{font-size:0.82rem;font-weight:800;text-align:right;}
+.voter-comment{font-size:0.82rem;color:var(--muted);font-style:italic;margin-top:0.6rem;padding-top:0.6rem;border-top:1px solid var(--border);}
+.empty-state{text-align:center;padding:2rem;color:var(--muted);}
+.empty-state .big{font-size:2.5rem;margin-bottom:0.5rem;}
+.btn-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.25rem;}
+.action-btn{border:none;color:#fff;padding:0.65rem 1.2rem;border-radius:10px;font-weight:700;cursor:pointer;font-size:0.88rem;transition:opacity 0.2s;}
+.action-btn:hover{opacity:0.85;}
+.btn-export{background:var(--accent);}
+.btn-refresh{background:#2a2a40;color:var(--accent2);}
+.btn-clear{background:#7f1d1d;color:#fca5a5;}
+.confirm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:9999;align-items:center;justify-content:center;padding:1rem;}
+.confirm-overlay.active{display:flex;}
+.confirm-box{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:2rem;max-width:360px;text-align:center;}
+.confirm-box h2{font-size:1.2rem;font-weight:800;margin-bottom:0.5rem;}
+.confirm-box p{color:var(--muted);font-size:0.9rem;margin-bottom:1.5rem;}
+.confirm-btns{display:flex;gap:0.75rem;justify-content:center;}
+.confirm-btns button{padding:0.65rem 1.4rem;border-radius:10px;border:none;font-weight:700;cursor:pointer;font-size:0.9rem;}
+.btn-cancel{background:var(--panel2);color:var(--text);}
+.btn-confirm-del{background:var(--red);color:#fff;}
+.loading{text-align:center;padding:2rem;color:var(--muted);font-size:0.9rem;}
+@media(max-width:500px){.tb-crit{grid-template-columns:100px 1fr 28px;}}
+</style>
+</head>
+<body>
+
+<div class="confirm-overlay" id="confirm-overlay">
+  <div class="confirm-box">
+    <h2>🗑️ Apagar todos os votos?</h2>
+    <p>Esta ação é irreversível. Todos os votos serão deletados do banco de dados.</p>
+    <div class="confirm-btns">
+      <button class="btn-cancel" onclick="closeConfirm()">Cancelar</button>
+      <button class="btn-confirm-del" onclick="confirmClear()">Sim, apagar tudo</button>
+    </div>
+  </div>
+</div>
+
+<div class="login-wrap" id="login-wrap">
+  <div class="login-box">
+    <div class="lock">🔐</div>
+    <h1>Painel Administrativo</h1>
+    <p>Gincana Super-Heróis · Acesso restrito</p>
+    <input type="password" id="admin-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkAdmin()"/>
+    <button onclick="checkAdmin()">Entrar</button>
+    <div class="login-err" id="login-err">Senha incorreta.</div>
+  </div>
+</div>
+
+<div id="admin-content">
+  <div class="top-bar">
+    <h1>⚙️ Admin — Gincana Super-Heróis</h1>
+    <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+      <span id="last-refresh" style="font-size:0.8rem;color:var(--muted);"></span>
+      <button class="logout-btn" onclick="logout()">Sair</button>
+    </div>
+  </div>
+  <div class="container"><div id="panel-body"><div class="loading">Carregando votos...</div></div></div>
+</div>
+
+<script>
+const ADMIN_PASS="jalimrabei123";
+const SB_URL="https://vkjuahxyqtremzecjjia.supabase.co";
+const SB_SERVICE="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZranVhaHh5cXRyZW16ZWNqamlhIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MjQwOTA2NiwiZXhwIjoyMDk3OTg1MDY2fQ.TZkfbWjEN7nWa1xy96Fv8jhQBo-a9WobXn1kXbSYwss";
+const TEAMS=[
+  {id:"jalim",name:"Jalim Rabei",hero:"Capitão Broxa",members:"Uaite, Miller, Knp"},
+  {id:"dio",name:"Time Tendo",hero:"Aurelyth",members:"Dio, Noah, Siloow"},
+  {id:"duvidos",name:"Damusnu Centro",hero:"Laurance",members:"Duvidos, Speed, Passos"},
+  {id:"uyris",name:"+Amor -O de 1",hero:"Parámen",members:"Uyris, Juanito, Gi, Hindosken"},
+];
+const CRITERIA=[
+  {id:"criatividade",name:"Criatividade"},
+  {id:"historia",name:"História"},
+  {id:"poderes",name:"Poderes"},
+  {id:"visual",name:"Visual"},
+  {id:"trabalho_equipe",name:"Equipe"},
+  {id:"humor",name:"Humor"},
+  {id:"geral",name:"⭐ Geral",general:true},
+];
+
+function checkAdmin(){
+  if(document.getElementById("admin-pass").value===ADMIN_PASS){
+    document.getElementById("login-wrap").style.display="none";
+    document.getElementById("admin-content").style.display="block";
+    renderPanel();
+  }else{
+    document.getElementById("login-err").style.display="block";
+    document.getElementById("admin-pass").value="";
+  }
+}
+function logout(){
+  document.getElementById("login-wrap").style.display="flex";
+  document.getElementById("admin-content").style.display="none";
+  document.getElementById("admin-pass").value="";
+  document.getElementById("login-err").style.display="none";
+}
+
+async function getVotes(){
+  const res=await fetch(SB_URL+"/rest/v1/votos?select=*&order=created_at.asc",{
+    headers:{"apikey":SB_SERVICE,"Authorization":"Bearer "+SB_SERVICE}
+  });
+  return res.ok ? await res.json() : [];
+}
+
+async function renderPanel(){
+  document.getElementById("last-refresh").textContent="Atualizando...";
+  const votes=await getVotes();
+  document.getElementById("last-refresh").textContent="Atualizado às "+new Date().toLocaleTimeString("pt-BR");
+
+  const totals={};
+  TEAMS.forEach(t=>{totals[t.id]={name:t.name,hero:t.hero,members:t.members,total:0};});
+  votes.forEach(vote=>{
+    TEAMS.forEach(team=>{
+      if(vote.my_team===team.id||!vote.scores[team.id])return;
+      CRITERIA.forEach(c=>{totals[team.id].total+=vote.scores[team.id][c.id]||0;});
+    });
+  });
+  const sorted=Object.values(totals).sort((a,b)=>b.total-a.total);
+  const maxPts=sorted[0]?.total||1;
+  const medals=["🥇","🥈","🥉","4️⃣"];
+
+  let html="";
+
+  // Stats
+  html+='<div class="stat-grid">';
+  html+='<div class="stat-box"><div class="stat-num">'+votes.length+'</div><div class="stat-label">Votos recebidos</div></div>';
+  html+='<div class="stat-box"><div class="stat-num">'+TEAMS.length+'</div><div class="stat-label">Equipes</div></div>';
+  html+='<div class="stat-box"><div class="stat-num">'+CRITERIA.length+'</div><div class="stat-label">Critérios</div></div>';
+  html+='</div>';
+
+  // Ranking
+  html+='<div class="card"><div class="card-title">🏆 Ranking de pontos</div>';
+  sorted.forEach((t,i)=>{
+    const pct=maxPts>0?Math.round((t.total/maxPts)*100):0;
+    html+='<div class="rank-card"><div class="rank-pos">'+(medals[i]||i+1)+'</div><div class="rank-info"><h3>'+t.name+' — '+t.hero+'</h3><p>'+t.members+'</p><div class="pts-bar-bg"><div class="pts-bar" style="width:'+pct+'%"></div></div></div><div class="rank-pts">'+t.total+' pts</div></div>';
+  });
+  html+='</div>';
+
+  // Actions
+  html+='<div class="btn-row"><button class="action-btn btn-export" onclick="exportCSV()">⬇️ Exportar CSV</button><button class="action-btn btn-refresh" onclick="renderPanel()">🔄 Atualizar</button><button class="action-btn btn-clear" onclick="openConfirm()">🗑️ Limpar votos</button></div>';
+
+  // Voter details
+  html+='<div class="card"><div class="card-title">📋 Votos detalhados — confidencial ('+votes.length+' registros)</div>';
+  if(votes.length===0){
+    html+='<div class="empty-state"><div class="big">🗳️</div><p>Nenhum voto registrado ainda.</p></div>';
+  }else{
+    [...votes].reverse().forEach(vote=>{
+      const dt=new Date(vote.created_at).toLocaleString("pt-BR");
+      const skipped=vote.my_team?TEAMS.find(t=>t.id===vote.my_team):null;
+      let grand=0;
+      TEAMS.forEach(t=>{if(vote.my_team!==t.id&&vote.scores[t.id])CRITERIA.forEach(c=>{grand+=vote.scores[t.id][c.id]||0;});});
+
+      html+='<div class="voter-card">';
+      html+='<div class="vcard-header"><div class="vcard-name">👤 '+vote.nome+'</div><div class="vcard-meta"><span class="vcard-time">🕐 '+dt+'</span><span class="vcard-grand">'+grand+' pts totais</span></div></div>';
+      if(skipped) html+='<div class="own-team-badge">🏅 Marcou como <strong>sua própria equipe</strong>: '+skipped.name+' — '+skipped.hero+'</div>';
+
+      TEAMS.forEach(team=>{
+        const isSk=vote.my_team===team.id;
+        html+='<div class="team-breakdown'+(isSk?' skipped':'')+'">';
+        html+='<div class="tb-header"><span class="tb-team-name">'+team.name+' — <em>'+team.hero+'</em></span>';
+        if(isSk){html+='<span class="tb-skip-badge">⏭ Pulou (equipe própria)</span>';}
+        else{let tot=0;CRITERIA.forEach(c=>{tot+=vote.scores[team.id]?.[c.id]||0;});html+='<span class="tb-total">'+tot+' pts</span>';}
+        html+='</div>';
+        if(!isSk){
+          html+='<div class="tb-criteria">';
+          CRITERIA.forEach(c=>{
+            const s=vote.scores[team.id]?.[c.id]||0;
+            const col=s<=4?"#ef4444":s<=7?"#f59e0b":"#22c55e";
+            html+='<div class="tb-crit'+(c.general?" tb-crit-general":'')+'">';
+            html+='<div class="tb-crit-label">'+c.name+'</div>';
+            html+='<div class="tb-crit-bar-wrap"><div class="tb-crit-bar" style="width:'+(s*10)+'%;background:'+col+'"></div></div>';
+            html+='<div class="tb-crit-score" style="color:'+col+'">'+s+'</div>';
+            html+='</div>';
+          });
+          html+='</div>';
+        }
+        html+='</div>';
+      });
+      if(vote.comment) html+='<div class="voter-comment">💬 '+vote.comment+'</div>';
+      html+='</div>';
+    });
+  }
+  html+='</div>';
+
+  document.getElementById("panel-body").innerHTML=html;
+}
+
+function openConfirm(){document.getElementById("confirm-overlay").classList.add("active");}
+function closeConfirm(){document.getElementById("confirm-overlay").classList.remove("active");}
+async function confirmClear(){
+  await fetch(SB_URL+"/rest/v1/votos?id=neq.00000000-0000-0000-0000-000000000000",{
+    method:"DELETE",
+    headers:{"apikey":SB_SERVICE,"Authorization":"Bearer "+SB_SERVICE}
+  });
+  closeConfirm();
+  renderPanel();
+}
+
+async function exportCSV(){
+  const votes=await getVotes();
+  const header=["Nome","Horário","Minha Equipe",...TEAMS.flatMap(t=>CRITERIA.map(c=>t.name+"-"+c.name)),"Comentário"];
+  const rows=[header.join(",")];
+  votes.forEach(vote=>{
+    const skName=vote.my_team?TEAMS.find(t=>t.id===vote.my_team)?.name||"":"";
+    const cells=TEAMS.flatMap(t=>CRITERIA.map(c=>vote.my_team===t.id?"(pulou)":vote.scores[t.id]?.[c.id]||0));
+    rows.push(['"'+vote.nome+'"','"'+new Date(vote.created_at).toLocaleString("pt-BR")+'"','"'+skName+'"',...cells,'"'+(vote.comment||"")+'"'].join(","));
+  });
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([rows.join("\n")],{type:"text/csv;charset=utf-8;"}));
+  a.download="votos_gincana.csv";a.click();
+}
+</script>
+</body>
+</html>
