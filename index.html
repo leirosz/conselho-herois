@@ -41,48 +41,46 @@ body{background:var(--dark);color:var(--text);font-family:"Segoe UI",system-ui,s
 .hymn{background:var(--panel2);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:0.75rem 1rem;font-size:0.82rem;color:var(--muted);line-height:1.6;font-style:italic;margin-bottom:0.75rem;}
 .pgrid{display:grid;gap:0.6rem;margin-bottom:0.75rem;}
 .pi{background:var(--panel2);border-radius:10px;padding:0.8rem 1rem;border-left:3px solid var(--green);}
-.pi.w{border-left-color:var(--red);}
-.pi.n{border-left-color:var(--gold);}
+.pi.w{border-left-color:var(--red);} .pi.n{border-left-color:var(--gold);}
 .pi .pn{font-size:0.9rem;font-weight:700;margin-bottom:0.3rem;}
 .pi .pd{font-size:0.82rem;color:var(--muted);line-height:1.5;}
 .pi .pl{font-size:0.82rem;color:var(--muted);line-height:1.9;}
 .info-table{width:100%;border-collapse:collapse;margin-bottom:0.75rem;background:var(--panel2);border-radius:10px;overflow:hidden;}
-.info-table tr{border-bottom:1px solid var(--border);}
-.info-table tr:last-child{border-bottom:none;}
+.info-table tr{border-bottom:1px solid var(--border);} .info-table tr:last-child{border-bottom:none;}
 .info-table td{padding:0.6rem 1rem;font-size:0.86rem;}
-.info-table td:first-child{color:var(--muted);width:38%;font-size:0.79rem;}
-.info-table td:last-child{font-weight:600;}
+.info-table td:first-child{color:var(--muted);width:38%;font-size:0.79rem;} .info-table td:last-child{font-weight:600;}
 .origin-block{background:var(--panel2);border-radius:12px;padding:1rem 1.1rem;margin-bottom:0.75rem;}
-.oc{margin-bottom:0.9rem;}
-.oc:last-child{margin-bottom:0;}
+.oc{margin-bottom:0.9rem;} .oc:last-child{margin-bottom:0;}
 .oct{font-size:0.8rem;font-weight:700;color:var(--gold);margin-bottom:0.35rem;}
 .ocp{font-size:0.83rem;color:var(--muted);line-height:1.65;}
 .quote-box{background:var(--panel2);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:0.75rem 1rem;font-size:0.9rem;color:var(--gold);font-style:italic;margin-bottom:0.75rem;font-weight:600;}
 .divider{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
-/* My Team Banner */
 .my-team-banner{background:linear-gradient(135deg,rgba(245,197,24,0.12),rgba(245,197,24,0.04));border:2px solid var(--gold);border-radius:14px;padding:1rem 1.25rem;font-size:1rem;color:var(--gold);cursor:pointer;text-align:center;margin-bottom:0.75rem;transition:all 0.2s;user-select:none;}
 .my-team-banner:hover{background:rgba(245,197,24,0.2);}
 .my-team-banner.active{background:var(--gold);color:#0d0d1a;font-weight:700;}
 .my-team-banner.active::before{content:"✅ ";}
 .vote-block-hidden{display:none;}
-/* Criteria */
 .criteria-grid{display:grid;gap:0.85rem;}
 .criterion{background:var(--panel2);border-radius:12px;padding:0.9rem 1rem;}
-.crit-general{border:2px solid var(--gold);}
-.crit-general .crit-name{color:var(--gold);}
+.crit-general{border:2px solid var(--gold);} .crit-general .crit-name{color:var(--gold);}
 .crit-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;}
 .crit-name{font-size:0.9rem;font-weight:600;}
 .crit-score{background:var(--accent);color:#fff;border-radius:8px;padding:0.2rem 0.6rem;font-size:1rem;font-weight:800;min-width:36px;text-align:center;}
-.crit-score.low{background:#b91c1c;}.crit-score.mid{background:#b45309;}.crit-score.high{background:#15803d;}
+.crit-score.low{background:#b91c1c;} .crit-score.mid{background:#b45309;} .crit-score.high{background:#15803d;}
 .crit-desc{font-size:0.75rem;color:var(--muted);margin-bottom:0.6rem;}
 .stars{display:flex;gap:4px;flex-wrap:wrap;}
 .star-btn{width:30px;height:30px;border-radius:6px;border:1px solid var(--border);background:var(--panel);color:var(--muted);font-size:0.8rem;font-weight:700;cursor:pointer;transition:all 0.12s;display:flex;align-items:center;justify-content:center;}
 .star-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;}
 .star-btn:hover:not(.active){border-color:var(--accent2);color:var(--accent2);}
-/* Submit */
 .submit-btn{width:100%;padding:1rem;border:none;border-radius:12px;background:var(--accent);color:#fff;font-size:1.05rem;font-weight:700;cursor:pointer;transition:opacity 0.2s,transform 0.1s;}
-.submit-btn:hover{opacity:0.9;}.submit-btn:active{transform:scale(0.98);}
+.submit-btn:hover{opacity:0.9;} .submit-btn:active{transform:scale(0.98);}
+.submit-btn:disabled{opacity:0.5;cursor:not-allowed;}
 .notice{background:rgba(124,92,191,0.12);border:1px solid rgba(160,132,232,0.2);border-radius:10px;padding:0.75rem 1rem;font-size:0.85rem;color:var(--accent2);margin-bottom:1rem;}
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:#1a1a2e;border:1px solid var(--border);border-radius:12px;padding:0.85rem 1.5rem;font-size:0.9rem;font-weight:600;z-index:9998;display:none;box-shadow:0 8px 32px rgba(0,0,0,0.5);}
+.toast.show{display:block;animation:fadeup 0.3s ease;}
+.toast.ok{border-color:var(--green);color:var(--green);}
+.toast.err{border-color:var(--red);color:var(--red);}
+@keyframes fadeup{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%,0)}}
 .success-screen{text-align:center;padding:3rem 1rem;display:none;}
 .success-icon{font-size:4rem;margin-bottom:1rem;}
 .success-screen h2{font-size:1.6rem;font-weight:800;margin-bottom:0.5rem;}
@@ -95,6 +93,7 @@ body{background:var(--dark);color:var(--text);font-family:"Segoe UI",system-ui,s
   <button class="lb-close" onclick="closeLB()">&#x2715;</button>
   <img id="lb-img" src="" alt=""/>
 </div>
+<div class="toast" id="toast"></div>
 
 <div class="hero-banner">
   <h1>🦸 Gincana <span>Super-Heróis</span></h1>
@@ -103,7 +102,7 @@ body{background:var(--dark);color:var(--text);font-family:"Segoe UI",system-ui,s
 
 <div class="container">
 <div id="vote-form">
-<div class="notice">🔒 Seu nome é <strong>confidencial</strong> — apenas o admin verá quem votou. Os outros participantes não saberão em quem você votou.</div>
+<div class="notice">🔒 Seu nome é <strong>confidencial</strong> — apenas o admin verá quem votou.</div>
 
 <div class="card name-wrap">
   <div class="card-title">Identificação</div>
@@ -111,7 +110,7 @@ body{background:var(--dark);color:var(--text);font-family:"Segoe UI",system-ui,s
   <input type="text" id="vname" placeholder="Digite seu nome..." autocomplete="off"/>
 </div>
 
-<!-- ══ JALIM RABEI ══ -->
+<!-- JALIM RABEI -->
 <div class="team-section">
   <div class="team-header">
     <div class="team-badge">Equipe Uaite · Jalim Rabei</div>
@@ -131,29 +130,29 @@ body{background:var(--dark);color:var(--text);font-family:"Segoe UI",system-ui,s
   <div class="hymn">"Transar de ladinho é mt poggers a piroca entrando e saindo kekw ai tu da uma segurada no peitinho e dale na metelancia mid gap only bota a mão no pescocinho dela e tome micro dif o foda eh so quando o dick escapa da pussy ai é omegalul total .-."</div>
   <span class="slabel">💥 Poderes</span>
   <div class="pgrid">
-    <div class="pi"><div class="pn">🟢 1. Estado Imbroxável</div><div class="pd">Enquanto se mantiver totalmente flácido e desinteressado, ele é energeticamente invencível. A apatia física é o seu escudo absoluto contra o caos do mundo.</div></div>
-    <div class="pi"><div class="pn">🟢 2. Onda do Balde de Água Fria</div><div class="pd">Drena instantaneamente o tesão, a empolgação, o foco e a ereção de qualquer inimigo num raio de 50 metros. O vilão perde a vontade de lutar.</div></div>
-    <div class="pi"><div class="pn">🟢 3. Dobragem de Fluido</div><div class="pd">Controle hidrocinético de nível ômega. Pode disparar rajadas táticas de alta viscosidade ou deixar o piso extremamente escorregadio.</div></div>
+    <div class="pi"><div class="pn">🟢 1. Estado Imbroxável</div><div class="pd">Enquanto flácido e desinteressado, ele é energeticamente invencível. A apatia física é seu escudo absoluto.</div></div>
+    <div class="pi"><div class="pn">🟢 2. Onda do Balde de Água Fria</div><div class="pd">Drena tesão, empolgação, foco e ereção de qualquer inimigo num raio de 50 metros.</div></div>
+    <div class="pi"><div class="pn">🟢 3. Dobragem de Fluido</div><div class="pd">Controle hidrocinético de nível ômega. Rajadas táticas de alta viscosidade ou piso escorregadio.</div></div>
   </div>
   <span class="slabel">❌ Fraquezas</span>
   <div class="pgrid">
-    <div class="pi w"><div class="pn">🔴 1. O Despertar do Titã</div><div class="pd">Se ele ficar ereto perde todos os poderes instantaneamente. A força só retorna quando ele broxa novamente.</div></div>
-    <div class="pi w"><div class="pn">🔴 2. Mulher Gostosa</div><div class="pd">O gatilho visual ou psicológico de uma presença atraente pode quebrar sua neutralidade corporal.</div></div>
-    <div class="pi w"><div class="pn">🔴 3. Tadalafila — A Criptonita Química</div><div class="pd">Se exposto ao Tadala, entra em estado de alerta rígido por horas, ficando totalmente vulnerável.</div></div>
+    <div class="pi w"><div class="pn">🔴 1. O Despertar do Titã</div><div class="pd">Se ficar ereto perde todos os poderes. A força só retorna quando broxa novamente.</div></div>
+    <div class="pi w"><div class="pn">🔴 2. Mulher Gostosa</div><div class="pd">Gatilho visual ou psicológico que pode quebrar sua neutralidade corporal.</div></div>
+    <div class="pi w"><div class="pn">🔴 3. Tadalafila — A Criptonita Química</div><div class="pd">Exposto ao Tadala, entra em alerta rígido por horas, ficando totalmente vulnerável.</div></div>
   </div>
   <span class="slabel">📖 História de Origem</span>
   <div class="origin-block">
-    <div class="oc"><div class="oct">📍 Origens em Pintópolis</div><div class="ocp">Antes de se tornar uma lenda viva, ele era apenas José Pinto Carvalho, um jovem pacato nascido em Pintópolis. Filho de Penisvaldo e Xanaina, tinha vida normal até que o destino lhe aplicou o maior golpe de sua vida.</div></div>
-    <div class="oc"><div class="oct">🧙‍♀️ A Maldição da Bruxa</div><div class="ocp">Sua ex-namorada era uma bruxa vingativa de magia negra. Ela conjurou uma praga: <em>"Se não vai ser meu, não vai ser de mais ninguém! Que a moleza te guie e que sejas broxa para todo o sempre!"</em></div></div>
-    <div class="oc"><div class="oct">🌎 A Saga Pela Cura</div><div class="ocp">José viajou pelos quatro cantos do mundo — urologistas na Europa, monges no Tibete, curandeiros na Amazônia, cientistas no Japão. Ninguém conseguia quebrar a barreira mágica. Então encontrou o lendário <em>"Elixir da Reação Suprema"</em>.</div></div>
-    <div class="oc"><div class="oct">⚡ O Despertar do Herói</div><div class="ocp">O elixir entrou em colisão com a magia da bruxa — houve uma explosão de energia espiritual! A cura transmutou o feitiço em superpoderes. José vestiu sua calça de moletom cinza e assumiu o manto do <strong>Capitão Broxa</strong>.</div></div>
+    <div class="oc"><div class="oct">📍 Origens em Pintópolis</div><div class="ocp">Antes de se tornar uma lenda, era apenas José Pinto Carvalho, jovem pacato nascido em Pintópolis. Filho de Penisvaldo e Xanaina, tinha vida normal até que o destino lhe aplicou o maior golpe de sua vida.</div></div>
+    <div class="oc"><div class="oct">🧙‍♀️ A Maldição da Bruxa</div><div class="ocp">Sua ex era uma bruxa vingativa de magia negra. Ela conjurou: <em>"Se não vai ser meu, não vai ser de mais ninguém! Que a moleza te guie e que sejas broxa para todo o sempre!"</em></div></div>
+    <div class="oc"><div class="oct">🌎 A Saga Pela Cura</div><div class="ocp">José viajou o mundo inteiro — urologistas na Europa, monges no Tibete, curandeiros na Amazônia, cientistas no Japão. Ninguém conseguia quebrar a magia. Então encontrou o lendário <em>"Elixir da Reação Suprema"</em>.</div></div>
+    <div class="oc"><div class="oct">⚡ O Despertar do Herói</div><div class="ocp">O elixir colidiu com a magia da bruxa — explosão de energia espiritual! A cura transmutou o feitiço em superpoderes. José vestiu sua calça de moletom cinza e assumiu o manto do <strong>Capitão Broxa</strong>.</div></div>
   </div>
   <hr class="divider"/>
   <div class="my-team-banner" id="banner-jalim" onclick="toggleMyTeam('jalim')">👇 Essa é a <strong>minha equipe</strong> — não vou avaliar</div>
-  <div id="vote-block-jalim"><div class="card-title" style="margin-bottom:0.9rem">🗳️ Avalie este projeto (1 a 10 por critério)</div><div class="criteria-grid" id="criteria-jalim"></div></div>
+  <div id="vote-block-jalim"><div class="card-title" style="margin-bottom:0.9rem">🗳️ Avalie (1 a 10 por critério)</div><div class="criteria-grid" id="criteria-jalim"></div></div>
 </div>
 
-<!-- ══ AURELYTH ══ -->
+<!-- AURELYTH -->
 <div class="team-section">
   <div class="team-header">
     <div class="team-badge">Equipe Dio · Time Tendo</div>
@@ -171,29 +170,27 @@ body{background:var(--dark);color:var(--text);font-family:"Segoe UI",system-ui,s
   </table>
   <span class="slabel">✦ Poderes</span>
   <div class="pgrid">
-    <div class="pi"><div class="pn">🟢 Controle do Ciclo Natural</div><div class="pd">Pode acelerar, retardar ou restaurar processos naturais como nascimento, crescimento, decadência e morte em qualquer ser vivo ou ecossistema.</div></div>
-    <div class="pi"><div class="pn">🟢 Memória das Eras</div><div class="pd">Carrega a memória viva de todos os ciclos que já presenciou. Pode revisitar eventos passados como se estivesse presente, extraindo padrões e verdades ocultas na história.</div></div>
-    <div class="pi"><div class="pn">🟢 Presença do Equilíbrio</div><div class="pd">Sua mera presença estabiliza ambientes corrompidos, acalmando o caos e restaurando a ordem em ecossistemas desequilibrados.</div></div>
-    <div class="pi"><div class="pn">🟢 Visão do Fim</div><div class="pd">Percebe quando uma vida, civilização ou era está chegando ao fim natural. Garante que o ciclo se complete com dignidade.</div></div>
-    <div class="pi"><div class="pn">🟢 Forma da Árvore</div><div class="pd">Pode fundir-se com a Árvore da Vida, tornando-se invisível ao mundo mortal e inacessível a forças corruptoras.</div></div>
+    <div class="pi"><div class="pn">🟢 Controle do Ciclo Natural</div><div class="pd">Acelera, retarda ou restaura processos naturais como nascimento, crescimento, decadência e morte.</div></div>
+    <div class="pi"><div class="pn">🟢 Memória das Eras</div><div class="pd">Carrega a memória viva de todos os ciclos presenciados. Revisita eventos passados extraindo verdades ocultas.</div></div>
+    <div class="pi"><div class="pn">🟢 Presença do Equilíbrio</div><div class="pd">Sua mera presença estabiliza ambientes corrompidos e restaura a ordem em ecossistemas desequilibrados.</div></div>
+    <div class="pi"><div class="pn">🟢 Visão do Fim</div><div class="pd">Percebe quando uma vida, civilização ou era está chegando ao fim natural.</div></div>
+    <div class="pi"><div class="pn">🟢 Forma da Árvore</div><div class="pd">Pode fundir-se com a Árvore da Vida, tornando-se invisível ao mundo mortal.</div></div>
   </div>
   <span class="slabel">✦ Fraqueza</span>
-  <div class="pgrid">
-    <div class="pi w"><div class="pn">🔴 O Peso da Escolha</div><div class="pd">Quando se apega demais a um ser ou civilização, sua capacidade de decidir pelo equilíbrio fica comprometida. Quem compreende isso pode manipulá-la oferecendo conexão e afeto que ela jamais deveria ter.</div></div>
-  </div>
+  <div class="pgrid"><div class="pi w"><div class="pn">🔴 O Peso da Escolha</div><div class="pd">Quando se apega demais a um ser, sua capacidade de decidir pelo equilíbrio fica comprometida. Quem compreende isso pode manipulá-la com afeto.</div></div></div>
   <span class="slabel">✦ História de Origem</span>
   <div class="origin-block">
-    <div class="oc"><div class="oct">O Nascimento</div><div class="ocp">Nos primórdios da existência, Gaia e Urano contemplaram a maior ameaça: a recusa dos seres vivos em aceitar o fim. Se esse desejo prevalecesse, o mundo acabaria consumindo a si mesmo. Entregaram parte de suas essências ao núcleo da Árvore da Vida — e dessa união nasceu Aurelyth.</div></div>
-    <div class="oc"><div class="oct">A Guardiã das Eras</div><div class="ocp">Ela presencia impérios se erguerem e ruírem, amores florescerem e gerações desaparecerem. Enquanto os mortais vivem uma única história, Aurelyth carrega milhares. Seu despertar — uma vez a cada mil anos — não é porque o mundo está em paz. É porque algo deu errado.</div></div>
-    <div class="oc"><div class="oct">O Presságio</div><div class="ocp">Sua presença é bênção e presságio ao mesmo tempo. Durante cinquenta anos ela percorre o mundo restaurando o desequilíbrio. Alguns a veneram como salvadora. Outros a temem. Há quem passe a vida inteira aguardando seu retorno — sem compreender que sua chegada nunca é motivo de celebração.</div></div>
-    <div class="oc"><div class="oct">O Verdadeiro Fardo</div><div class="ocp">O verdadeiro fardo de Aurelyth não é seu poder. É saber que poderia salvar quase todos — e ainda assim ter de escolher quem não deve ser salvo. <em>Amar a vida não significa impedir a morte. Significa compreender que uma não pode existir sem a outra.</em></div></div>
+    <div class="oc"><div class="oct">O Nascimento</div><div class="ocp">Nos primórdios, Gaia e Urano contemplaram a maior ameaça: a recusa dos seres em aceitar o fim. Entregaram parte de suas essências ao núcleo da Árvore da Vida — e dessa união nasceu Aurelyth.</div></div>
+    <div class="oc"><div class="oct">A Guardiã das Eras</div><div class="ocp">Ela presencia impérios se erguerem e ruírem, amores florescerem e gerações desaparecerem. Enquanto mortais vivem uma história, Aurelyth carrega milhares. Seu despertar não é porque o mundo está em paz. É porque algo deu errado.</div></div>
+    <div class="oc"><div class="oct">O Presságio</div><div class="ocp">Sua presença é bênção e presságio. Durante cinquenta anos restaura o desequilíbrio. Alguns a veneram como salvadora. Outros a temem. Poucos compreendem que sua chegada nunca é motivo de celebração.</div></div>
+    <div class="oc"><div class="oct">O Verdadeiro Fardo</div><div class="ocp">O verdadeiro fardo não é seu poder. É saber que poderia salvar quase todos — e ter de escolher quem não deve ser salvo. <em>Amar a vida não significa impedir a morte. Significa compreender que uma não existe sem a outra.</em></div></div>
   </div>
   <hr class="divider"/>
   <div class="my-team-banner" id="banner-dio" onclick="toggleMyTeam('dio')">👇 Essa é a <strong>minha equipe</strong> — não vou avaliar</div>
-  <div id="vote-block-dio"><div class="card-title" style="margin-bottom:0.9rem">🗳️ Avalie este projeto (1 a 10 por critério)</div><div class="criteria-grid" id="criteria-dio"></div></div>
+  <div id="vote-block-dio"><div class="card-title" style="margin-bottom:0.9rem">🗳️ Avalie (1 a 10 por critério)</div><div class="criteria-grid" id="criteria-dio"></div></div>
 </div>
 
-<!-- ══ LAURANCE ══ -->
+<!-- LAURANCE -->
 <div class="team-section">
   <div class="team-header">
     <div class="team-badge">Equipe Duvidos · Damusnu Centro</div>
@@ -207,27 +204,25 @@ body{background:var(--dark);color:var(--text);font-family:"Segoe UI",system-ui,s
     <div class="id-item"><div class="il">Idade</div><div class="iv">Desconhecida</div></div>
   </div>
   <span class="slabel">📖 Origem</span>
-  <div class="origin-block"><div class="ocp">Durante anos, Laurance percorreu ruínas esquecidas, templos perdidos e locais misteriosos em busca de artefatos antigos. Sua fama cresceu após desvendar mistérios que ninguém mais conseguia solucionar, tornando-se lenda entre exploradores e aventureiros ao redor do mundo. Onde há um segredo enterrado pelo tempo, há grandes chances de Laurance já ter passado por lá.</div></div>
+  <div class="origin-block"><div class="ocp">Durante anos, Laurance percorreu ruínas esquecidas, templos perdidos e locais misteriosos em busca de artefatos antigos. Tornou-se lenda entre exploradores e aventureiros ao redor do mundo. Onde há um segredo enterrado pelo tempo, há grandes chances de Laurance já ter passado por lá.</div></div>
   <span class="slabel">⚔️ Habilidades</span>
   <div class="pgrid">
     <div class="pi n"><div class="pn">❌ Poderes Sobrenaturais</div><div class="pd">Nenhum.</div></div>
-    <div class="pi"><div class="pn">✅ Habilidades Humanas</div><div class="pl">🧠 Inteligência acima da média<br>📚 Vastíssimo conhecimento histórico<br>🏕️ Sobrevivência em ambientes extremos<br>🗡️ Maestria com armas antigas<br>♟️ Estratégia e raciocínio rápido<br>🦁 Coragem inabalável</div></div>
-    <div class="pi"><div class="pn">🎒 Equipamentos</div><div class="pl">🎒 Mochila de exploração · 🔦 Lanterna tática<br>🪢 Corda reforçada · 🗺️ Mapa de locais secretos<br>🏺 Coleção de artefatos raros · ⚔️ Armas antigas</div></div>
+    <div class="pi"><div class="pn">✅ Habilidades Humanas</div><div class="pl">🧠 Inteligência acima da média · 📚 Vasto conhecimento histórico<br>🏕️ Sobrevivência em ambientes extremos · 🗡️ Maestria com armas antigas<br>♟️ Estratégia e raciocínio rápido · 🦁 Coragem inabalável</div></div>
+    <div class="pi"><div class="pn">🎒 Equipamentos</div><div class="pl">🎒 Mochila · 🔦 Lanterna tática · 🪢 Corda reforçada<br>🗺️ Mapa de locais secretos · 🏺 Artefatos raros · ⚔️ Armas antigas</div></div>
   </div>
   <span class="slabel">💔 Fraqueza</span>
-  <div class="pgrid"><div class="pi w"><div class="pn">🔴 👧 Sua filha</div><div class="pd">Laurance faria qualquer coisa para protegê-la. Inimigos que descobrem essa informação podem utilizá-la para distraí-lo, manipulá-lo ou fazê-lo agir impulsivamente.</div></div></div>
-  <span class="slabel">🎭 Personalidade</span>
-  <div class="pgrid"><div class="pi n"><div class="pl">🎯 Determinado · 🦁 Corajoso · 🪨 Teimoso · 🛡️ Protetor · 🔎 Extremamente curioso · 🚫 Nunca abandona uma missão</div></div></div>
+  <div class="pgrid"><div class="pi w"><div class="pn">🔴 👧 Sua filha</div><div class="pd">Laurance faria qualquer coisa para protegê-la. Inimigos podem usá-la para distraí-lo ou fazê-lo agir impulsivamente.</div></div></div>
   <span class="slabel">💬 Frase Marcante</span>
   <div class="quote-box">"Se falar é o seu poder, o que você é sem falar?"</div>
   <span class="slabel">⭐ Resumo</span>
-  <div class="origin-block"><div class="ocp">Laurance não possui poderes sobrenaturais, mas compensa com inteligência, experiência e determinação. Sua maior força é encontrar soluções onde outros veem apenas obstáculos. Sua maior fraqueza é também aquilo que mais valoriza: sua filha.</div></div>
+  <div class="origin-block"><div class="ocp">Sem poderes sobrenaturais, Laurance compensa com inteligência, experiência e determinação. Encontra soluções onde outros veem obstáculos. Sua maior fraqueza é também o que mais valoriza: sua filha.</div></div>
   <hr class="divider"/>
   <div class="my-team-banner" id="banner-duvidos" onclick="toggleMyTeam('duvidos')">👇 Essa é a <strong>minha equipe</strong> — não vou avaliar</div>
-  <div id="vote-block-duvidos"><div class="card-title" style="margin-bottom:0.9rem">🗳️ Avalie este projeto (1 a 10 por critério)</div><div class="criteria-grid" id="criteria-duvidos"></div></div>
+  <div id="vote-block-duvidos"><div class="card-title" style="margin-bottom:0.9rem">🗳️ Avalie (1 a 10 por critério)</div><div class="criteria-grid" id="criteria-duvidos"></div></div>
 </div>
 
-<!-- ══ PARÁMEN ══ -->
+<!-- PARÁMEN -->
 <div class="team-section">
   <div class="team-header">
     <div class="team-badge">Equipe Uyris · +Amor -O de 1</div>
@@ -242,44 +237,43 @@ body{background:var(--dark);color:var(--text);font-family:"Segoe UI",system-ui,s
     <div class="id-item"><div class="il">Status</div><div class="iv">Herói Regional Classe A</div></div>
   </div>
   <span class="slabel">🎯 Hobbies</span>
-  <div class="pgrid"><div class="pi n"><div class="pl">⚽ Torcer pelo Pará<br>🎰 Jogar bingo todo final de semana<br>🗣️ Defender a honra paraense em qualquer discussão</div></div></div>
+  <div class="pgrid"><div class="pi n"><div class="pl">⚽ Torcer pelo Pará · 🎰 Jogar bingo todo final de semana · 🗣️ Defender a honra paraense</div></div></div>
   <span class="slabel">⚡ Poderes</span>
-  <div class="pgrid">
-    <div class="pi"><div class="pn">🍺 Fermentação Alcoólica Sanguínea</div><div class="pd">Induz a fermentação alcoólica da glicose no sangue dos oponentes, causando: embriaguez instantânea, hipoglicemia severa, confusão mental e sonolência extrema. Poucos sobrevivem ao lendário <strong>Golpe da Cachaça Metabólica™</strong>.</div></div>
-  </div>
+  <div class="pgrid"><div class="pi"><div class="pn">🍺 Fermentação Alcoólica Sanguínea</div><div class="pd">Induz fermentação alcoólica da glicose no sangue dos oponentes: embriaguez instantânea, hipoglicemia severa, confusão mental e sonolência extrema. Poucos sobrevivem ao <strong>Golpe da Cachaça Metabólica™</strong>.</div></div></div>
   <span class="slabel">❌ Fraqueza</span>
-  <div class="pgrid"><div class="pi w"><div class="pn">🔴 Estrabismo</div><div class="pd">Parámen sofre de estrabismo, o que ocasionalmente o faz atacar dois criminosos diferentes ao mesmo tempo... mesmo quando só existe um.</div></div></div>
+  <div class="pgrid"><div class="pi w"><div class="pn">🔴 Estrabismo</div><div class="pd">Ocasionalmente ataca dois criminosos diferentes ao mesmo tempo... mesmo quando só existe um.</div></div></div>
   <span class="slabel">💬 Frase de Efeito</span>
   <div class="quote-box">"Se parar crime é meu dever, o que será Pará sem mim?"</div>
   <span class="slabel">📖 História de Origem</span>
   <div class="origin-block">
-    <div class="oc"><div class="oct">🍼 O Nascimento</div><div class="ocp">A história começa em 27 de outubro de 2004, em Belém do Pará, quando nasce um jovem descendente dos tupiniquins. Tudo parecia normal — até seus 15 anos de idade.</div></div>
-    <div class="oc"><div class="oct">🐍 A Picada Lendária</div><div class="ocp">Durante uma viagem para Água Azul do Norte, o jovem Antonio foi picado por uma misteriosa <strong>jararaca estrábica</strong>. O acidente despertou nele os lendários Poderes Paraenses.</div></div>
-    <div class="oc"><div class="oct">🦸‍♂️ O Herói das Terras Paraenses</div><div class="ocp">Desde então, Parámen enfrenta: 🚓 Criminosos comuns · 💸 O Serasa · 🧾 A Receita Federal · 🏛️ O Estado</div></div>
-    <div class="oc"><div class="oct">🍔 A Vida Dupla</div><div class="ocp">Quando não está salvando o Pará, trabalha discretamente como funcionário da <strong>🍔 Pará-Lanches</strong>. Nenhum cliente jamais suspeitou que o entregador de hambúrgueres é o defensor mascarado das terras paraenses.</div></div>
+    <div class="oc"><div class="oct">🍼 O Nascimento</div><div class="ocp">27 de outubro de 2004, Belém do Pará. Um jovem descendente dos tupiniquins nasce. Tudo parecia normal — até seus 15 anos.</div></div>
+    <div class="oc"><div class="oct">🐍 A Picada Lendária</div><div class="ocp">Em Água Azul do Norte, Antonio foi picado por uma misteriosa <strong>jararaca estrábica</strong>. O acidente despertou os lendários Poderes Paraenses.</div></div>
+    <div class="oc"><div class="oct">🦸‍♂️ O Herói</div><div class="ocp">Desde então enfrenta: 🚓 Criminosos · 💸 O Serasa · 🧾 A Receita Federal · 🏛️ O Estado</div></div>
+    <div class="oc"><div class="oct">🍔 A Vida Dupla</div><div class="ocp">Quando não salva o Pará, trabalha na <strong>🍔 Pará-Lanches</strong>. Nenhum cliente imagina que o entregador de hambúrgueres é o defensor mascarado das terras paraenses.</div></div>
   </div>
-  <div class="pgrid" style="margin-top:0.75rem"><div class="pi n"><div class="pl" style="font-size:0.85rem;line-height:2">🗺️ <strong>Área de atuação:</strong> Pará e regiões vizinhas<br>⚔️ <strong>Nível de ameaça aos criminosos:</strong> EXTREMO<br>🎰 <strong>Nível de ameaça ao estoque de bingo:</strong> CRÍTICO</div></div></div>
+  <div class="pgrid" style="margin-top:0.75rem"><div class="pi n"><div class="pl" style="font-size:0.85rem;line-height:2">🗺️ <strong>Área de atuação:</strong> Pará e regiões vizinhas · ⚔️ <strong>Ameaça aos criminosos:</strong> EXTREMO · 🎰 <strong>Ameaça ao bingo:</strong> CRÍTICO</div></div></div>
   <hr class="divider"/>
   <div class="my-team-banner" id="banner-uyris" onclick="toggleMyTeam('uyris')">👇 Essa é a <strong>minha equipe</strong> — não vou avaliar</div>
-  <div id="vote-block-uyris"><div class="card-title" style="margin-bottom:0.9rem">🗳️ Avalie este projeto (1 a 10 por critério)</div><div class="criteria-grid" id="criteria-uyris"></div></div>
+  <div id="vote-block-uyris"><div class="card-title" style="margin-bottom:0.9rem">🗳️ Avalie (1 a 10 por critério)</div><div class="criteria-grid" id="criteria-uyris"></div></div>
 </div>
 
 <div class="card" style="margin-top:0.5rem">
   <div class="card-title">Comentário final (opcional)</div>
   <textarea id="comment" rows="3" placeholder="Deixe um comentário geral..." style="width:100%;background:var(--panel2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:0.9rem;padding:0.75rem 1rem;outline:none;resize:vertical;font-family:inherit;"></textarea>
 </div>
-<button class="submit-btn" onclick="submitVote()">🗳️ Enviar meu voto</button>
-</div><!-- /vote-form -->
+<button class="submit-btn" id="submit-btn" onclick="submitVote()">🗳️ Enviar meu voto</button>
+</div>
 
 <div class="success-screen" id="success-screen">
   <div class="success-icon">✅</div>
   <h2>Voto registrado!</h2>
   <p>Obrigado pela participação.<br>Os resultados serão revelados pelo admin no final da gincana.</p>
 </div>
-</div><!-- /container -->
+</div>
 
 <script>
-const STORAGE_KEY="gincana_votes_v4";
+const SB_URL="https://vkjuahxyqtremzecjjia.supabase.co";
+const SB_ANON="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZranVhaHh5cXRyZW16ZWNqamlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI0MDkwNjYsImV4cCI6MjA5Nzk4NTA2Nn0.Hrf13bkMc8YRUjbamVrSioIEyB5hjG8EWHym59lcM0o";
 const TEAMS=[
   {id:"jalim",name:"Jalim Rabei",hero:"Capitão Broxa",members:"Uaite, Miller, Knp"},
   {id:"dio",name:"Time Tendo",hero:"Aurelyth",members:"Dio, Noah, Siloow"},
@@ -321,42 +315,63 @@ function setScore(tid,cid,val){
 }
 
 function toggleMyTeam(tid){
-  const wasActive=myTeam[tid];
+  const was=myTeam[tid];
   Object.keys(myTeam).forEach(k=>{
-    if(myTeam[k]){
-      myTeam[k]=false;
-      document.getElementById("banner-"+k).classList.remove("active");
-      document.getElementById("vote-block-"+k).classList.remove("vote-block-hidden");
-    }
+    if(myTeam[k]){myTeam[k]=false;document.getElementById("banner-"+k).classList.remove("active");document.getElementById("vote-block-"+k).classList.remove("vote-block-hidden");}
   });
-  if(!wasActive){
-    myTeam[tid]=true;
-    document.getElementById("banner-"+tid).classList.add("active");
-    document.getElementById("vote-block-"+tid).classList.add("vote-block-hidden");
-  }
+  if(!was){myTeam[tid]=true;document.getElementById("banner-"+tid).classList.add("active");document.getElementById("vote-block-"+tid).classList.add("vote-block-hidden");}
 }
 
-function getVotes(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");}catch{return[];}}
-function saveVotes(v){localStorage.setItem(STORAGE_KEY,JSON.stringify(v));}
+function showToast(msg,type,ms=3000){
+  const t=document.getElementById("toast");
+  t.textContent=msg;t.className="toast "+type+" show";
+  setTimeout(()=>t.classList.remove("show"),ms);
+}
 
-function submitVote(){
+async function submitVote(){
   const name=document.getElementById("vname").value.trim();
-  if(!name){alert("Por favor, informe seu nome antes de votar.");return;}
+  if(!name){showToast("⚠️ Informe seu nome antes de votar.","err");return;}
   let ok=true;
   TEAMS.forEach(t=>{if(myTeam[t.id])return;CRITERIA.forEach(c=>{if(!scores[t.id][c.id])ok=false;});});
-  if(!ok){alert("Por favor, avalie todos os critérios das outras equipes antes de votar!");return;}
-  const votes=getVotes();
-  if(votes.find(v=>v.name.toLowerCase()===name.toLowerCase())){alert("Este nome já votou!");return;}
+  if(!ok){showToast("⚠️ Avalie todos os critérios das outras equipes!","err");return;}
+
+  const btn=document.getElementById("submit-btn");
+  btn.disabled=true;btn.textContent="Enviando...";
+
+  // Check duplicate
+  const check=await fetch(SB_URL+"/rest/v1/votos?nome=eq."+encodeURIComponent(name)+"&select=id",{
+    headers:{"apikey":SB_ANON,"Authorization":"Bearer "+SB_ANON}
+  });
+  const existing=await check.json();
+  if(existing.length>0){showToast("⚠️ Este nome já votou!","err");btn.disabled=false;btn.textContent="🗳️ Enviar meu voto";return;}
+
   const myTeamId=Object.keys(myTeam).find(k=>myTeam[k])||null;
-  votes.push({name,timestamp:new Date().toISOString(),comment:document.getElementById("comment").value.trim(),scores:JSON.parse(JSON.stringify(scores)),myTeam:myTeamId});
-  saveVotes(votes);
-  document.getElementById("vote-form").style.display="none";
-  document.getElementById("success-screen").style.display="block";
+  const payload={
+    nome:name,
+    scores:scores,
+    my_team:myTeamId,
+    comment:document.getElementById("comment").value.trim()
+  };
+
+  const res=await fetch(SB_URL+"/rest/v1/votos",{
+    method:"POST",
+    headers:{"apikey":SB_ANON,"Authorization":"Bearer "+SB_ANON,"Content-Type":"application/json","Prefer":"return=minimal"},
+    body:JSON.stringify(payload)
+  });
+
+  if(res.ok||res.status===201){
+    document.getElementById("vote-form").style.display="none";
+    document.getElementById("success-screen").style.display="block";
+  } else {
+    const err=await res.text();
+    showToast("❌ Erro ao enviar voto. Tente novamente.","err",5000);
+    console.error(err);
+    btn.disabled=false;btn.textContent="🗳️ Enviar meu voto";
+  }
 }
 
 function openLB(src){document.getElementById("lb-img").src=src;document.getElementById("lightbox").classList.add("active");}
 function closeLB(){document.getElementById("lightbox").classList.remove("active");}
-
 buildCriteria();
 </script>
 </body>
